@@ -42,23 +42,13 @@ public class Save extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		IGestion dao = new GestionImp();
 		String titre=request.getParameter("titrePfe");
-		//Object et=request.getAttribute("etud");
-		//Object en =request.getAttribute("ense");
-		//Object ct = request.getAttribute("categ");
 		int id_etd=Integer.parseInt(request.getParameter("etud"));
 		int id_ens=Integer.parseInt(request.getParameter("ense"));
 		int id_cat=Integer.parseInt(request.getParameter("categ"));
-		/** les recherches par nomp et prenom **/ 
-		
-		/*Pfe p = new Pfe();
-		p.setTitrePfe(titre);
-		p.setEt((Etudiant) et);
-		p.setEn((Enseignant) en);
-		p.setCat((Categorie) ct);*/
 		Pfe p = new Pfe(titre,id_etd,id_ens,id_cat);
 		dao.addPfe(p);
 		response.sendRedirect("Principale");
-		//request.getRequestDispatcher("Principale").forward(request, response);
+		
 	}
 
 }
